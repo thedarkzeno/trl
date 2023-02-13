@@ -171,10 +171,10 @@ class PPOTrainer(BaseTrainer):
             raise ValueError(
                 f"tokenizer must be a PreTrainedTokenizer or PreTrainedTokenizerFast, got {type(tokenizer)}"
             )
-        if not isinstance(model, PreTrainedModelWrapper):
-            raise ValueError(
-                f"model must be a PreTrainedModelWrapper, got {type(model)} - supported architectures are: {SUPPORTED_ARCHITECTURES}"
-            )
+#         if not isinstance(model, PreTrainedModelWrapper):
+#             raise ValueError(
+#                 f"model must be a PreTrainedModelWrapper, got {type(model)} - supported architectures are: {SUPPORTED_ARCHITECTURES}"
+#             )
         # Step 1: Initialize Accelerator
         self.accelerator = Accelerator(log_with=config.log_with, **config.accelerator_kwargs)
         self.accelerator.init_trackers(config.tracker_project_name, config=config.to_dict(), **config.tracker_kwargs)
