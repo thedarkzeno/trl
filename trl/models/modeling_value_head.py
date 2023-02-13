@@ -242,6 +242,7 @@ class AutoModelForSeq2SeqLMWithValueHead(PreTrainedModelWrapper):
         super().__init__(pretrained_model)
         v_head_kwargs, _ = self._split_kwargs(kwargs)
         self.is_encoder_decoder = True
+        self.config = pretrained_model.config
 
         if not self._has_lm_head():
             raise ValueError("The model does not have a language model head, please use a model that has one.")
