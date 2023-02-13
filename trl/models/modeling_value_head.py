@@ -250,6 +250,7 @@ class AutoModelForSeq2SeqLMWithValueHead(PreTrainedModelWrapper):
         self.v_head = ValueHead(self.pretrained_model.config, **v_head_kwargs)
 
         self._init_weights(**v_head_kwargs)
+        self.prepare_inputs_for_generation = self.pretrained_model.prepare_inputs_for_generation
 
     def _has_lm_head(self):
         # check module names of all modules inside `pretrained_model` to find the language model head
